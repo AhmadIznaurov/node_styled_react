@@ -2,7 +2,7 @@ import React from 'react';
 import styled, {css} from 'styled-components'
 
 const StyledButton = styled.button`
- border: none;
+  border: none;
   padding: 10px 40px;
   font-size: 18px;
   &:focus {

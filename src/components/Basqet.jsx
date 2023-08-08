@@ -3,15 +3,22 @@ import styled from 'styled-components'
 
 const StyledBasqet = styled.div`
   background-color: black;
-  color: ${({color}) => color || 'white'};
+  color: ${({ color }) => color || 'white'};
   resize: none;
+
   &:focus {
     outline: none;
   }
+
   border: none;
   font-size: 22px;
-  margin: 0 70px;
-  width: 100%;
+  margin: 30px 70px;
+  width: 88%;
+  height: 40vh;
+  display: block;
+  word-wrap: break-word;
+  border: 1px solid green;
+
 `
 
 

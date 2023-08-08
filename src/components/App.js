@@ -5,7 +5,7 @@ import { Console } from './Console'
 import { Button } from './Button'
 import React, { useState } from 'react';
 import { Basqet } from './Basqet'
-
+import ReactLoading from 'react-loading';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -14,38 +14,64 @@ const Wrapper = styled.div`
   padding: 1.5rem;
 `
 
+const WrapLoader = styled.div`
+margin: -350px auto;
+`
 
 
-function App() {
-  const [inputText, setInputText] = useState('');
+const App = () => {
+  const [inputText, setInputText] = useState("");
+  const [loading, setLoading] = useState(false);
   const [textList, setTextList] = useState([]);
 
-  function handleInputChange(event) {
+  const handleInputChange = (event) => {
     setInputText(event.target.value);
     console.log(event.target.value)
-  }
+  };
 
-  function handleSendClick() {
-    setTextList(value => [...value, inputText]);
-    setInputText('');
+  const handleSendClick = () => {
+    setLoading(true);
+
+
+    setTimeout(() => {
+      setLoading(false);
+      setTextList((TextList) => [...TextList, inputText]);
+      setInputText("");
+    }, 1000);
+  };
+
+  const Preloader = () => {
+    return (
+      <WrapLoader>
+        <ReactLoading type={"spinningBubbles"} color={"purple"} height={200} width={200} />
+      </WrapLoader>
+    )
   }
+  const url = 'photo';
 
   return (
     <Wrapper>
-      <Flex justify={'center'}>
-        <Tittle color={'green'}>Console cmd NODE.JS august 2023</Tittle>
+      <Flex>
+        <WrapLoader  />
       </Flex>
-      <Flex direction={'column'}>
+      <Flex justify={"center"}>
+        <Tittle color={"green"}>Console cmd NODE.JS august 2023</Tittle>
+      </Flex>
+      <Flex direction={"column"}>
         <Console value={inputText} onChange={handleInputChange} />
-        <Button align={'flex-end'} outline color={'green'} onClick={handleSendClick}>
+        <Button align={"flex-end"} outline color={"green"} onClick={handleSendClick}>
           Send
         </Button>
       </Flex>
       <Flex>
-        <Basqet value={textList} />
+        {loading ? (
+          <Preloader />
+        ) : (
+          <Basqet value={textList} />
+        )}
       </Flex>
     </Wrapper>
   );
-}
+};
 
 export default App;

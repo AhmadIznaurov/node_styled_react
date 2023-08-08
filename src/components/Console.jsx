@@ -21,6 +21,7 @@ const StyledConsole = styled.textarea`
 export const Console = (props) => {
   const [lines, setLines] = useState(['C/USERS/NODECODE>'])
 
+
   const setPressKey = (event) => {
     if(event.charCode === 13) {
       setLines([...lines, 'C/USERS/NODECODE>'])

@@ -18,6 +18,12 @@ const WrapLoader = styled.div`
 margin: -350px auto;
 `
 
+const ImgStyled = styled.div`
+  display: flex;
+  justify-content: end;
+  margin-top: -15px;
+`
+
 
 const App = () => {
   const [inputText, setInputText] = useState("");
@@ -47,7 +53,6 @@ const App = () => {
       </WrapLoader>
     )
   }
-  const url = 'photo';
 
   return (
     <Wrapper>
@@ -55,7 +60,11 @@ const App = () => {
         <WrapLoader  />
       </Flex>
       <Flex justify={"center"}>
-        <Tittle color={"green"}>Console cmd NODE.JS august 2023</Tittle>
+        <Tittle color={"green"}>Console cmd NODE.JS august 2023
+        </Tittle>
+        <ImgStyled>
+          <img src="https://www.mervcodes.com/wp-content/uploads/2017/12/nodejslogo.png" alt="node" width={170} height={100}/>
+        </ImgStyled>
       </Flex>
       <Flex direction={"column"}>
         <Console value={inputText} onChange={handleInputChange} />
